@@ -7859,6 +7859,14 @@ normalize-url@^4.1.0:
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-4.5.0.tgz#453354087e6ca96957bd8f5baf753f5982142129"
   integrity sha512-2s47yzUxdexf1OhyRi4Em83iQk0aPvwTddtFz4hnSSw9dCEsLEGf6SwIO8ss/19S9iBb5sJaOuTvTGDeZI00BQ==
 
+notion-utils@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.npmjs.org/notion-utils/-/notion-utils-3.4.2.tgz#71cf2fc2ed144fc85a4b485f44624aebd3e2e783"
+  integrity sha512-IyS8ZNllzHKF+XGzN5dask2Y9pMtv5paGBd5ZkM1ibWxiV9Ji5/sXzihoNEkesGjYjU0ZthOJ3sf5+RGu6hemg==
+  dependencies:
+    notion-types "^3.1.1"
+    p-queue "^6.6.1"
+
 npm-bundled@^1.0.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/npm-bundled/-/npm-bundled-1.1.1.tgz#1edd570865a94cdb1bc8220775e29466c9fb234b"
@@ -9005,6 +9013,31 @@ react-modal@^3.11.2:
     prop-types "^15.5.10"
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
+
+react-notion-x@^3.4.1:
+  version "3.4.2"
+  resolved "https://registry.npmjs.org/react-notion-x/-/react-notion-x-3.4.2.tgz#79b1c1c5b3c55340a3ad984cee8f07b536f9ee82"
+  integrity sha512-NuVWG+T410o1SSFVlhc8+ERTIYAlO9v6MWlX0TAB+HtgYkFVYbpG+kR7QDuNW6dzuMhODwtF+jUsjnb+7Rcxjw==
+  dependencies:
+    "@matejmazur/react-katex" "^3.1.3"
+    date-fns "^2.15.0"
+    format-number "^3.0.0"
+    is-url-superb "^4.0.0"
+    katex "^0.12.0"
+    lodash.throttle "^4.1.1"
+    medium-zoom "^1.0.6"
+    notion-types "^3.1.1"
+    notion-utils "^3.4.2"
+    prismjs "^1.20.0"
+    rc-dropdown "^3.1.2"
+    rc-menu "^8.5.2"
+    react-hotkeys-hook "^3.0.3"
+    react-image "^4.0.3"
+    react-lazy-images "^1.1.0"
+    react-modal "^3.11.2"
+    react-pdf "^4.2.0"
+    react-tweet-embed "^1.2.2"
+    react-use "^15.3.3"
 
 react-pdf@^4.2.0:
   version "4.2.0"

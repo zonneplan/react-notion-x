@@ -3,7 +3,6 @@
   "npmClient": "yarn",
   "useWorkspaces": true,
   "packages": [
-    "packages/*",
-    "example/"
+    "packages/react-notion-x"
   ]
 }
