@@ -7,6 +7,19 @@ import { PageIcon } from './page-icon'
 import { SearchIcon } from '../icons/search-icon'
 import { cs } from '../utils'
 import { SearchDialog } from './search-dialog'
+import useWindowDimensions from '../hooks/useWindowDimensions'
+
+const getBreadcrumbLimit = (currentWindowWidth: number): number => {
+  if (currentWindowWidth < 500) {
+    return 2;
+  }
+
+  if (currentWindowWidth < 830) {
+    return 3;
+  }
+
+  return 6;
+}
 
 export const PageHeader: React.FC<{}> = () => {
   const {
@@ -16,6 +29,8 @@ export const PageHeader: React.FC<{}> = () => {
     mapPageUrl,
     searchNotion
   } = useNotionContext()
+
+  const { windowWidth } = useWindowDimensions();
 
   const blockMap = recordMap.block
   const blockIds = Object.keys(blockMap)
@@ -60,7 +75,31 @@ export const PageHeader: React.FC<{}> = () => {
     currentPageId = parentId
   } while (true)
 
-  breadcrumbs.reverse()
+  const breadcrumbsTotal = breadcrumbs.length
+  const breadcrumbsLimit = getBreadcrumbLimit(windowWidth)
+  let breadrumbsToRemove = breadcrumbsTotal > breadcrumbsLimit ? Math.abs(breadcrumbsLimit - breadcrumbsTotal) : 0;
+  console.log('remove', breadrumbsToRemove);
+
+  let filteredBreadcrumbs = [...breadcrumbs];
+
+  filteredBreadcrumbs
+    .shift()
+
+  breadrumbsToRemove -= 1;
+
+  filteredBreadcrumbs = filteredBreadcrumbs
+    .reverse()
+    .filter((value, index) => {
+      console.log(`index ${index}`)
+      if (breadrumbsToRemove > 0 && index > 0) {
+        breadrumbsToRemove -= 1;
+        console.log('hide', value);
+        return false;
+      }
+
+      return true;
+    })
+
 
   const [isSearchOpen, setIsSearchOpen] = React.useState(false)
   const onOpenSearch = React.useCallback(() => {
@@ -90,7 +129,7 @@ export const PageHeader: React.FC<{}> = () => {
 
       <div className='nav-header'>
         <div className='breadcrumbs'>
-          {breadcrumbs.map((breadcrumb, index) => {
+          {filteredBreadcrumbs.map((breadcrumb, index) => {
             const pageLinkProps: any = {}
             const componentMap = {
               pageLink: components.pageLink
@@ -117,7 +156,7 @@ export const PageHeader: React.FC<{}> = () => {
                   )}
                 </componentMap.pageLink>
 
-                {index < breadcrumbs.length - 1 && (
+                {index < filteredBreadcrumbs.length - 1 && (
                   <span className='spacer'>/</span>
                 )}
               </React.Fragment>
@@ -134,7 +173,7 @@ export const PageHeader: React.FC<{}> = () => {
             >
               <SearchIcon className='searchIcon' />
 
-              <span className='title'>Search</span>
+              <span className='title'>Zoeken</span>
             </div>
           )}
         </div>

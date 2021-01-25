@@ -130,9 +130,9 @@ export class SearchDialog extends React.Component<{
                       </NotionContextProvider>
                     ) : (
                       <div className='noResultsPane'>
-                        <div className='noResults'>No results</div>
+                        <div className='noResults'>Geen resultaten</div>
                         <div className='noResultsDetail'>
-                          Try different search terms
+                          Probeer het eens met andere woorden.
                         </div>
                       </div>
                     )}
@@ -141,7 +141,9 @@ export class SearchDialog extends React.Component<{
 
                 {hasQuery && !searchResult && searchError && (
                   <div className='noResultsPane'>
-                    <div className='noResults'>Search error</div>
+                    <div className='noResults'>
+                      Er is een technische fout opgetreden.
+                    </div>
                   </div>
                 )}
               </div>
